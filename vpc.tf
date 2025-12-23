@@ -1,8 +1,8 @@
 # VPCの作成
 resource "google_compute_network" "my_vpc" {
-  # ここでExercise 1のランダム文字列を組み合わせて名前を作ります
-  name                    = "fumika-${random_string.fumika-random.result}"
-  auto_create_subnetworks = false # 演習ではfalseにすることが多いです
+  # random_string ではなく main.tf で定義した random_id を使うように修正します
+  name                    = "fumika-vpc-${random_id.bucket_suffix.hex}"
+  auto_create_subnetworks = false
 }
 
 # 実行後にURLを表示するための設定
