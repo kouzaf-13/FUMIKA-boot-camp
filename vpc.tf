@@ -1,9 +1,3 @@
-provider "google" {
-
-  project = var.project_id
-  region  = var.region
-}
-
 # VPCの作成
 resource "google_compute_network" "my_vpc" {
   # ここでExercise 1のランダム文字列を組み合わせて名前を作ります
