@@ -8,7 +8,7 @@ resource "random_string" "vm_suffix" {
 # 2. Compute Instance の作成
 resource "google_compute_instance" "my_vm" {
   name         = "fumika-vm-${random_string.vm_suffix.result}"
-  machine_type = "e2-medium" # 最小構成
+  machine_type = var.machine_type
   zone         = "us-central1-a"
 
   # Exercise 2で作ったVPCを指定
@@ -24,7 +24,7 @@ resource "google_compute_instance" "my_vm" {
   }
 
   # 後でFirewallルールを適用するためのタグ
-  tags = ["allow-ssh"]
+  tags = var.vm_tags
 }
 
 # 3. インスタンスIDの出力

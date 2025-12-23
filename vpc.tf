@@ -1,9 +1,7 @@
 provider "google" {
 
-  project = "hc-54dff18a6bd1444cba92b455f3d"
-
-  region  = "us-central1"
-
+  project = var.project_id
+  region  = var.region
 }
 
 # VPCの作成
@@ -16,4 +14,11 @@ resource "google_compute_network" "my_vpc" {
 # 実行後にURLを表示するための設定
 output "vpc_self_link" {
   value = google_compute_network.my_vpc.self_link
+}
+
+resource "google_compute_subnetwork" "my_subnetwork" {
+  name          = "fumika-subnetwork"
+  ip_cidr_range = "10.0.1.0/24"
+  region        = "us-central1"
+  network       = google_compute_network.my_vpc.id
 }
