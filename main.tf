@@ -1,4 +1,4 @@
-form {
+terraform {
   cloud {
     organization = "fumika-kouzaki-terraform"
     workspaces {
