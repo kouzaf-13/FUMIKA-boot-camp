@@ -14,6 +14,7 @@ provider "random" {}
 resource "random_string" "fumika-random" {
   length  = 16   # お好きな文字列長でOK（例：16文字）
   special = false
+  upper   = false # これを追加して大文字を禁止にします
 }
 
 # 出力変数
