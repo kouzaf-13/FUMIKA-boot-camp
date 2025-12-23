@@ -1,3 +1,4 @@
+cat <<EOF > main.tf
 terraform {
   cloud {
     organization = "fumika-kouzaki-terraform"
@@ -15,17 +16,17 @@ terraform {
 }
 
 provider "google" {
-  # ここにあなたのGCPプロジェクトIDを正確に入れてください
-  project = "hc-54dff18a6bd1444cba92b455f3d" 
+  project = "hc-54dff18a6bd1444cba92b455f3d"
   region  = "us-central1"
 }
 
-# 練習用のリソース（例：バケットなど、今までの演習で使ったもの）
-resource "google_storage_bucket" "test_bucket" {
-  name     = "fumika-test-bucket-${random_id.id.hex}"
-  location = "US"
-}
-
-resource "random_id" "id" {
+resource "random_id" "bucket_suffix" {
   byte_length = 4
 }
+
+resource "google_storage_bucket" "test_bucket" {
+  name     = "fumika-boot-camp-bucket-\${random_id.bucket_suffix.hex}"
+  location = "US"
+  force_destroy = true
+}
+EOF
