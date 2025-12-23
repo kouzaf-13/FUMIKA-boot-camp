@@ -1,5 +1,4 @@
-cat <<EOF > main.tf
-terraform {
+form {
   cloud {
     organization = "fumika-kouzaki-terraform"
     workspaces {
@@ -25,8 +24,7 @@ resource "random_id" "bucket_suffix" {
 }
 
 resource "google_storage_bucket" "test_bucket" {
-  name     = "fumika-boot-camp-bucket-\${random_id.bucket_suffix.hex}"
-  location = "US"
+  name          = "fumika-boot-camp-bucket-${random_id.bucket_suffix.hex}"
+  location      = "US"
   force_destroy = true
 }
-EOF
