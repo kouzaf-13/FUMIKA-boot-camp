@@ -22,3 +22,11 @@ output "myrandom_output" {
   value = random_string.fumika-random.result
 }
 
+terraform {
+  cloud {
+    organization = "fumika-kouzaki-terraform"
+    workspaces {
+      name = "FUMIKA-boot-camp"
+    }
+  }
+}
