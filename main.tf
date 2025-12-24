@@ -24,11 +24,10 @@ resource "random_id" "bucket_suffix" {
 }
 
 resource "google_storage_bucket" "test_bucket" {
-  name          = "fumika-boot-camp-bucket-${random_id.bucket_suffix.hex}"
+  name          = "your-bucket-name"
   location      = "US"
-  force_destroy = true
+  
+  # この設定を追加（ブロックではなく引数）
+  uniform_bucket_level_access = true
 }
-  uniform_bucket_level_access {
-    enabled = true
-  }
-}
+
