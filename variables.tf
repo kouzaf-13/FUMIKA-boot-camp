@@ -24,5 +24,6 @@ variable "machine_type" {
 variable "vm_tags" {
   description = "Tags applied to the VM and Firewall"
   type        = list(string)
-  default     = ["allow-ssh"]
+  default     = ["allow-ssh","web"]
 }
+
