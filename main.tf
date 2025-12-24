@@ -32,8 +32,4 @@ resource "google_storage_bucket" "test_bucket" {
   }
 }
 
-# ランダムなサフィックスを生成
-resource "random_id" "bucket_suffix" {
-  byte_length = 4
-}
 
