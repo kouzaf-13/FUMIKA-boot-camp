@@ -27,9 +27,5 @@ resource "google_storage_bucket" "test_bucket" {
   name     = "fumika-test-bucket-${random_id.bucket_suffix.hex}"
   location = "US"
   
-  uniform_bucket_level_access {
-    enabled = true
-  }
+  uniform_bucket_level_access = true
 }
-
-
