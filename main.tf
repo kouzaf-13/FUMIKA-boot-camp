@@ -24,10 +24,16 @@ resource "random_id" "bucket_suffix" {
 }
 
 resource "google_storage_bucket" "test_bucket" {
-  name          = "your-bucket-name"
-  location      = "US"
+  name     = "fumika-test-bucket-${random_id.bucket_suffix.hex}"
+  location = "US"
   
-  # この設定を追加（ブロックではなく引数）
-  uniform_bucket_level_access = true
+  uniform_bucket_level_access {
+    enabled = true
+  }
+}
+
+# ランダムなサフィックスを生成
+resource "random_id" "bucket_suffix" {
+  byte_length = 4
 }
 
